@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.bus-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 50px); /* 4 seats per row */
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.driver{
+    display: grid;
+    grid-template-columns: repeat(4, 50px); /* 4 seats per row */
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    width: 40px;
+    height: 50px;
+    border: 2px dashed #888;
+    border-radius: 5px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+}
+
+.seat {
+    width: 40px;
+    height: 50px;
+    border: 2px dashed #888;
+    border-radius: 5px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+}
+.back{
+    margin-left: 40%;
+}
+.seat::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 8px;
+    border: 1px solid #888;
+    border-radius: 2px;
+}
+
+.seat.available {
+    border-color: green;
+}
+
+
+
+/* Remove default button styles */
+button.seat {
+    padding: 0;
+    border: 2px dashed #888;
+    background: white;
+
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .bus-layout {
+        grid-template-columns: repeat(4, 40px);
+        gap: 6px;
+    }
+    .seat {
+        width: 40px;
+        height: 60px;
+    }
+}
+</style>
+<body>
+    
+    <div class="bus-layout">
+        
+        <div class="main">
+
+        
+    <!-- Row 1 -->
+    <button class="seat "onclick="myFunction(this)">1</button>
+    <button class="seat" onclick="myFunction(this)">2</button>
+    <button class="seat"onclick="myFunction(this)">3</button>
+    <button class="seat"onclick="myFunction(this)">4</button>
+
+    <!-- Row 2 -->
+    <button class="seat"onclick="myFunction(this)">5</button>
+    <button class="seat"onclick="myFunction(this)">6</button>
+    <button class="seat "onclick="myFunction(this)">7</button>
+    <button class="seat"onclick="myFunction(this)">8</button>
+
+    <!-- Row 3 -->
+    <button class="seat "onclick="myFunction(this)">9</button>
+    <button class="seat"onclick="myFunction(this)">10</button>
+    <button class="seat"onclick="myFunction(this)">11</button>
+    <button class="seat"onclick="myFunction(this)">12</button>
+    </div>
+<div class="sub">
+    <!-- Row 4 -->
+    <button class="seat "onclick="myFunction(this)">13</button>
+    <button class="seat"onclick="myFunction(this)">14</button>
+    <button class="seat "onclick="myFunction(this)">15</button>
+    <button class="seat"onclick="myFunction(this)">16</button>
+
+    <!-- Add more rows as needed -->
+
+    <button class="seat "onclick="myFunction(this)">17</button>
+    <button class="seat"onclick="myFunction(this)">18</button>
+    <button class="seat "onclick="myFunction(this)">19</button>
+    <button class="seat"onclick="myFunction(this)">20</button>
+
+    <button class="seat "onclick="myFunction(this)">21</button>
+    <button class="seat"onclick="myFunction(this)">22</button>
+    <button class="seat "onclick="myFunction(this)">23</button>
+    <button class="seat"onclick="myFunction(this)">24</button>
+</div>
+</div>
+<div class="back">
+
+    <button class="seat "onclick="myFunction(this)">27</button>
+    <button class="seat"onclick="myFunction(this)">28</button></div>
+
+
+    
+    <script>
+
+    function myFunction(e) {
+e.disabled = true;
+}
+</script>
+</body>
+</html>

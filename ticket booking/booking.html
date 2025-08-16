@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Management</title>
+    <link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'"  rel="preload" href="booking.css">
+</head>
+
+<body>
+    <div class="background-img">
+        <div class="ticket-section">
+            <form id="ticket-form">
+                <h2>Ticket Management System</h2>
+                <input type="text" id="name" placeholder="Name" required><br>
+                <input type="text" id="seat" placeholder="Seat No" required><br>
+                <input type="date" id="date" required><br>
+                <input type="text" id="from" placeholder="From Location" required><br>
+                <input type="text" id="to" placeholder="To Location" required><br>
+                <input type="submit" value="Book Ticket">
+            </form>
+            <button id="view-history-btn">View History</button>
+        </div>
+        </div>
+        <div id="ticket-history" style="display: none;">
+            <h3>Ticket History</h3>
+            <table id="history-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Name</th>
+                        <th>Seat No</th>
+                        <th>Date</th>
+                        <th>From Location</th>
+                        <th>To Location</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="history-table-body">
+
+                </tbody>
+            </table>
+        </div> <script type="litespeed/javascript" data-src="booking.js">
+
+        </script>
+        <script data-no-optimize="1">
+      // -------------------------------
+// 1. LazyLoad Initialization
+// -------------------------------
+window.addEventListener("load", function () {
+    console.log("[LiteSpeed] Start Lazy Load Images");
+
+    // Initialize LazyLoad for elements with data-lazyloaded
+    const lazyLoader = new LazyLoad({
+        elements_selector: "[data-lazyloaded]",
+        callback_finish: function () {
+            document.body.classList.add("litespeed_lazyloaded");
+        }
+    });
+
+    
+    if (window.MutationObserver) {
+        const observer = new MutationObserver(() => lazyLoader.update());
+        observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true,
+            attributes: true
+        });
+    }
+});
+
+
+let litespeed_vary = document.cookie.replace(
+    /(?:(?:^|.*;\s*)_lscache_vary\s*\=\s*([^;]*).*$)|^.*$/,
+    ""
+);
+
+if (!litespeed_vary) {
+    fetch("/wp-content/plugins/litespeed-cache/guest.vary.php", {
+        method: "POST",
+        cache: "no-cache",
+        redirect: "follow"
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.hasOwnProperty("reload") && data.reload === "yes") {
+                sessionStorage.setItem("litespeed_docref", document.referrer);
+                window.location.reload(true);
+            }
+        });
+}
+
+const litespeed_ui_events = [
+    "mouseover", "click", "keydown", "wheel",
+    "touchmove", "touchstart"
+];
+const urlCreator = window.URL || window.webkitURL;
+
+
+function litespeed_load_delayed_js_force() {
+    console.log("[LiteSpeed] Start Load JS Delayed");
+
+
+    litespeed_ui_events.forEach(evt => {
+        window.removeEventListener(evt, litespeed_load_delayed_js_force, { passive: true });
+    });
+
+
+    document.querySelectorAll("iframe[data-litespeed-src]").forEach(iframe => {
+        iframe.setAttribute("src", iframe.getAttribute("data-litespeed-src"));
+    });
+
+
+    if (document.readyState === "loading") {
+        window.addEventListener("DOMContentLoaded", litespeed_load_delayed_js);
+    } else {
+        litespeed_load_delayed_js();
+    }
+}
+
+async function litespeed_load_delayed_js() {
+    let scripts = Array.from(document.querySelectorAll('script[type="litespeed/javascript"]'));
+
+    for (let script of scripts) {
+        await new Promise(resolve => litespeed_load_one(script, resolve));
+    }
+
+    // Dispatch custom events after loading
+    document.dispatchEvent(new Event("DOMContentLiteSpeedLoaded"));
+    window.dispatchEvent(new Event("DOMContentLiteSpeedLoaded"));
+}
+
+// Load one delayed JS script
+function litespeed_load_one(script, callback) {
+    console.log("[LiteSpeed] Load", script);
+
+    let newScript = document.createElement("script");
+    newScript.type = "text/javascript";
+
+    // Copy attributes except "type"
+    script.getAttributeNames().forEach(attr => {
+        if (attr !== "type") {
+            newScript.setAttribute(attr === "data-src" ? "src" : attr, script.getAttribute(attr));
+        }
+    });
+
+    // If inline JS, turn into blob URL
+    if (!newScript.src && script.textContent) {
+        newScript.src = litespeed_inline2src(script.textContent);
+    }
+
+    // Attach events
+    newScript.addEventListener("load", callback);
+    newScript.addEventListener("error", callback);
+
+    // Insert and remove old script
+    script.after(newScript);
+    script.remove();
+}
+
+
+
+// Listen for user actions to trigger delayed JS load
+litespeed_ui_events.forEach(evt => {
+    window.addEventListener(evt, litespeed_load_delayed_js_force, { passive: true });
+});
+
+                    </script></body>
+
+</html>

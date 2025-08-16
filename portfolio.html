@@ -1,0 +1,146 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ngabonziza Theogene — Portfolio</title>
+    <meta name="description" content="Portfolio of Ngabonziza Theogene — 2nd year Computer Science student, developer & musician." />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        :root{
+        --bg:#f7f8fb; --card:#ffffff; --text:#0b1220; --muted:#556; --accent:#4CAF50;
+        }
+        [data-theme="dark"]{ --bg:#0b0f14; --card:#0f1720; --text:#e6eef8; --muted:#9aa6bf; --accent:#81C784 }
+        *{box-sizing:border-box}
+        body{margin:0;font-family:Poppins,system-ui;background:var(--bg);color:var(--text);}
+        .container{max-width:1100px;margin:32px auto;padding:20px}
+        header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+        .brand{display:flex;align-items:center;gap:12px}
+        .avatar{width:72px;height:72px;border-radius:14px;object-fit:cover;background:#ddd}
+        h1{margin:0;font-size:1.5rem}
+        .lead{margin:6px 0;color:var(--muted)}
+        nav{display:flex;gap:12px}
+        nav a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted)}
+        nav a:hover{background:rgba(0,0,0,0.04)}
+
+        .intro{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:center}
+        .card{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 6px 20px rgba(10,15,30,0.06)}
+        .buttons{display:flex;gap:12px;margin-top:12px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer}
+        .btn.primary{background:var(--accent);color:white}
+        .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+
+        .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+        .skill{padding:8px 10px;border-radius:999px;background:rgba(0,0,0,0.04);font-size:0.9rem}
+
+        .projects{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+        .project h3{margin:0 0 8px}
+        .project p{margin:0;color:var(--muted);font-size:0.95rem}
+
+        footer{margin-top:36px;padding:18px;border-radius:12px;text-align:center;color:var(--muted)}
+
+        @media (max-width:900px){.intro{grid-template-columns:1fr}nav{display:none}}
+    </style>
+    </head>
+    <body>
+    <div class="container" id="page">
+        <header>
+        <div class="brand">
+            <img id="photo" src="unnamed.jpg" alt="Ngabonziza Theogene" class="avatar">
+            <div>
+            <h1>Ngabonziza Theogene</h1>
+            <div class="lead">2nd year Computer Science — Faculty of Science & Technology | Developer & Choir Musician</div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+            <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#music">Music</a>
+            <a href="#contact">Contact</a>
+            </nav>
+            <button class="theme-toggle" id="themeBtn">🌙</button>
+        </div>
+        </header>
+
+        <section class="intro">
+        <div class="card">
+            <h2>Hello — I’m <strong>Ngabonziza</strong></h2>
+            <p class="lead">I’m a second-year Computer Science student passionate about building useful web apps and integrating music with technology. I create solutions like ticket booking systems and smart attendance tools, and I compose and teach choir music (song: "NIB'UHORAHO").</p>
+            <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">HTML & CSS</span>
+            <span class="skill">Databases</span>
+            <span class="skill">C++</span>
+            <span class="skill">Choir Music & Composition</span>
+            </div>
+            <div class="buttons">
+            <a class="btn primary" href="Ngabo Theo resume.pdf" download>⬇️ Download CV</a>
+            <button class="btn ghost" id="contactMe">✉️ Contact Me</button>
+            </div>
+        </div>
+        </section>
+
+        <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="card project">
+            <h3>Ticket Booking System</h3>
+            <p>A mobile-friendly booking/purchase system for passengers to book transport tickets and for agencies to manage bookings and payments transparently.</p>
+            </div>
+            <div class="card project">
+            <h3>Smart Attendance System</h3>
+            <p>Digital attendance system for schools to replace paper registers and improve tracking for lecturers and students (no phone marking allowed).</p>
+            </div>
+            <div class="card project">
+            <h3>Multimedia & Choir Songs</h3>
+            <p>Composer and teacher for Catholic choirs — created "NIB'UHORAHO" and other liturgical pieces, integrating music with community teaching.</p>
+            </div>
+        </div>
+        </section>
+
+        <section id="music">
+        <h2>Music & Choir</h2>
+        <div class="card">
+            <p>I am active in Catholic choirs — I teach holy songs, compose, and arrange music for worship. My favorite composition is <strong>"NIB'UHORAHO"</strong>, a song encouraging faith during hard times.</p>
+            <audio controls style="margin-top:10px;width:100%">
+            <source src="nibuhoraho.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        </section>
+
+        <section id="contact">
+        <h2>Contact</h2>
+        <div class="card">
+            <p><strong>Email:</strong> ngabonzizatheogene72@gmail.com</p>
+            <p><strong>Phone:</strong> +250783091434</p>
+            <div class="socials">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">YouTube</a>
+            </div>
+        </div>
+        </section>
+
+        <footer>
+        Built by <strong>Ngabonziza Theogene</strong>
+        </footer>
+    </div>
+    <script>
+        const btn=document.getElementById('themeBtn');
+        if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');btn.textContent='☀️'}
+        btn.addEventListener('click',()=>{
+        if(document.documentElement.getAttribute('data-theme')==='dark'){
+            document.documentElement.removeAttribute('data-theme');btn.textContent='🌙';localStorage.setItem('theme','light');
+        } else {
+            document.documentElement.setAttribute('data-theme','dark');btn.textContent='☀️';localStorage.setItem('theme','dark');
+        }
+        });
+        document.getElementById('contactMe').addEventListener('click',()=>{
+        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+        });
+    </script>
+    </body>
+    </html>

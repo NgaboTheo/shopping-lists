@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event keyCodes</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: antiquewhite;
+        }
+        .insert{
+            padding: 30% 30%;
+            display: flex;
+        }
+        .key{
+            padding: 20px;
+        }
+        p{
+            padding: 20px;
+            background-color: aliceblue;
+            border: 1px solid black;
+            width: 40px;
+            height: 10px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="insert">
+    Please press any key you want inorder to know its key code
+        
+    </div>
+<script>
+    //method 1
+    // window.addEventListener('keydown',(e)=>{
+    //     const insert = document.querySelector('.insert')
+    //     insert.innerHTML = `
+    //     <div class="key">
+    //     <small>e.key</small>   
+    //     <p>${e.key===' ' ? 'space' : e.key}</p>
+        
+    //     </div>
+        
+
+    //     <div class="key">
+    //     <small>e.keyCodes</small>
+    //     <p>${e.keyCode}</p>
+        
+    //     </div>
+        
+
+    //     <div class="key">
+    //         <small>e.code</small>
+    //         <p>${e.code}</p>
+        
+    //     </div>
+    //     `
+    // })
+
+    //method2 
+    function showcode(e){
+    const insert = document.querySelector('.insert')
+    insert.innerHTML = ''
+
+    const keycodes = 
+        {
+            'e.key': e.key === ' ' ? 'space': e.key,
+            'e.keycode': e.keyCode,
+            'e.code': e.code
+        }
+    
+    for(let key in keycodes){
+        const div = document.createElement('div')
+        div.className = 'key';
+        const small = document.createElement('small')
+        const p = document.createElement('p')
+
+        const keyText = document.createTextNode(key)
+        const valueText = document.createTextNode(keycodes[key])
+
+        small.appendChild(keyText)
+        div.appendChild(valueText)
+        div.appendChild(small)
+        small.appendChild(p)
+
+        insert.appendChild(div)
+    }
+    
+    }
+    window.addEventListener('keydown', showcode)
+</script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cab Booking System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    background: #f5f5f5;
+    }
+
+    /* Sidebar */
+    .sidebar {
+    background: #6a1b9a;
+    color: white;
+    width: 240px;
+    padding: 0;
+    height: 100vh;
+    }
+
+    .sidebar .logo {
+    text-align: center;
+    font-size: 20px;
+    padding: 15px;
+    font-weight: bold;
+    background: #4a148c;
+    }
+
+    .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+
+    .sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    }
+
+    .sidebar ul li.active,
+    .sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Main Content */
+    main {
+    flex: 1;
+    padding: 20px;
+    }
+
+    header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    header h1 {
+    font-size: 24px;
+    }
+
+    .admin-profile {
+    background: #eee;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+
+    /* Stats Cards */
+    .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    }
+
+    .stat-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .stat-card i {
+    font-size: 30px;
+    }
+
+    .stat-card span {
+    font-weight: bold;
+    }
+
+    /* Table Section */
+    .table-section {
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .table-section input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    }
+
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+
+    table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    }
+
+    .status {
+    padding: 4px 8px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+    }
+
+    .status.Cancelled { background: #e53935; }
+    .status.Droppedoff { background: #43a047; }
+    .status.Pickedup { background: #fbc02d; }
+
+    button {
+    background: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+
+    </style>
+    </head>
+    <body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">CBS - PHP</div>
+        <ul>
+        <li class="active"><i class="fa fa-tachometer-alt"></i> Dashboard</li>
+        <li><i class="fa fa-list"></i> Manage Category</li>
+        <li><i class="fa fa-car"></i> Cab Management</li>
+        <li><i class="fa fa-eye"></i> View Bookings</li>
+        <li><i class="fa fa-users"></i> Registered Clients</li>
+        <li><i class="fa fa-user-cog"></i> System Users</li>
+        <li><i class="fa fa-cog"></i> Settings</li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <header>
+        <h1><i class="fa fa-car"></i> Cab Booking System</h1>
+        <div class="admin-profile">Administrator Liam ▼</div>
+        </header>
+
+        <!-- Stats Cards -->
+        <section class="stats" id="stats-container"></section>
+
+        <!-- Booking Table -->
+        <section class="table-section">
+        <h2>Booking List</h2>
+        <input type="text" id="search" placeholder="Search bookings...">
+        <table id="booking-table">
+            <thead>
+            <tr>
+                <th>Date Booked</th>
+                <th>Ref. Code</th>
+                <th>Cab Reg. Code</th>
+                <th>Client</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        </section>
+    </main>
+
+    <script src="">
+        async function loadDashboard() {
+    const res = await fetch('data.json');
+    const data = await res.json();
+
+    // Load Stats Cards with Icons & Colors
+    const statsConfig = [
+        { label: "Categories", icon: "fa-layer-group", color: "#7e57c2", value: data.stats.categories },
+        { label: "Available Cabs", icon: "fa-taxi", color: "#fbc02d", value: data.stats.availableCabs },
+        { label: "Registered Clients", icon: "fa-users", color: "#42a5f5", value: data.stats.registeredClients },
+        { label: "Bookings Made", icon: "fa-calendar-check", color: "#66bb6a", value: data.stats.bookingsMade },
+        { label: "Pending Bookings", icon: "fa-clock", color: "#ff7043", value: data.stats.pendingBookings },
+        { label: "Cancelled Bookings", icon: "fa-times-circle", color: "#ef5350", value: data.stats.cancelledBookings },
+        { label: "Ongoing Trips", icon: "fa-road", color: "#26a69a", value: data.stats.ongoingTrips },
+        { label: "Trips Completed", icon: "fa-check", color: "#43a047", value: data.stats.tripsCompleted },
+        { label: "System Users", icon: "fa-user-cog", color: "#ab47bc", value: data.stats.systemUsers }
+    ];
+
+    const statsContainer = document.getElementById('stats-container');
+    statsContainer.innerHTML = statsConfig.map(stat => `
+        <div class="stat-card" style="border-left: 5px solid ${stat.color}">
+        <i class="fa ${stat.icon}" style="color:${stat.color}"></i>
+        <div>
+            <span>${stat.value}</span><br>${stat.label}
+        </div>
+        </div>
+    `).join('');
+
+    // Load Booking Table
+    const tableBody = document.querySelector('#booking-table tbody');
+    tableBody.innerHTML = data.bookings.map(booking => `
+        <tr>
+        <td>${booking.dateBooked}</td>
+        <td>${booking.refCode}</td>
+        <td>${booking.cabRegCode}</td>
+        <td>${booking.client}</td>
+        <td><span class="status ${booking.status.replace(/\s/g, '')}">${booking.status}</span></td>
+        <td><button>View</button></td>
+        </tr>
+    `).join('');
+
+    // Search Function
+    document.getElementById('search').addEventListener('input', function() {
+        const term = this.value.toLowerCase();
+        document.querySelectorAll('#booking-table tbody tr').forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(term) ? '' : 'none';
+        });
+    });
+    }
+
+    loadDashboard();
+
+    </script>
+    </body>
+    </html>

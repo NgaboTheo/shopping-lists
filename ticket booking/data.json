@@ -1,0 +1,18 @@
+    {
+    "stats": {
+        "categories": 3,
+        "availableCabs": 14,
+        "registeredClients": 17,
+        "bookingsMade": 23,
+        "pendingBookings": 1,
+        "cancelledBookings": 6,
+        "ongoingTrips": 2,
+        "tripsCompleted": 14,
+        "systemUsers": 3
+    },
+    "bookings": [
+        { "dateBooked": "2022-03-27 22:54", "refCode": "202203-00013", "cabRegCode": "ASTR0850", "client": "Greenwood, Thomas J.", "status": "Cancelled" },
+        { "dateBooked": "2022-03-27 22:50", "refCode": "202203-00013", "cabRegCode": "ASTR0135", "client": "Greenwood, Thomas J.", "status": "Dropped off" },
+        { "dateBooked": "2022-03-27 21:43", "refCode": "202203-00013", "cabRegCode": "ASTR0306", "client": "Amos, Daniel J.", "status": "Picked up" }
+    ]
+    }

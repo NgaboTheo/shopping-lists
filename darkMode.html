@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .card{
+            padding: 20px;
+            background-color: rgb(209, 208, 207);
+        }
+
+        .hidden{
+            display: none;
+        }
+        .dark{
+            background: #0f0f0f;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="container">
+        <header>
+            <img src="note.png" width="50px" height="50px">
+            <h1 class="hello" id="app-title">Shopping List</h1>
+        </header>
+        <form id="item-form">
+            <div class="form-control">
+                <input type="text" class="form-input" id="item-input" name="item" placeholder="enter item">
+
+                
+            </div>
+            <button>+Add item</button>
+        </form>
+    </div> -->
+
+
+<h1>Adding and removing style & classes</h1>
+<p class="card">
+    Lorem ipsum dolor, sit amet consectetur adipisicing 
+    elit. Illum unde deleniti, temporibus odit minima 
+    numquam id, ipsa ducimus sapiente, facilis 
+    perspiciatis modi nam!
+    Repellat labore explicabo a quod delectus debitis?
+    </p>
+    <ul class="item-list items">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+    <button>Run</button>
+</p>
+<script>
+        // const div = document.createElement('div')
+        // div.className = 'my-elemet';
+        // div.id = 'my-item'
+
+        // const text = document.createTextNode('hello world')
+        // div.appendChild(text)
+        // document.body.appendChild(div)
+
+        // //console.log(div)
+
+
+    
+
+
+    /*function createListItem(item) {
+        const li = document.createElement('li')
+
+        li.innerHTML = `${item}
+        <button class="remove-item btn-link text-red">
+            <i class="fa-solid fa-xmark"></i>
+            </button>`
+        document.querySelector('.items').appendChild(li)
+            }
+            createListItem('eggs')
+    --------------------------------------------------------------------------
+
+            function createNewItem(item) {
+                const li = document.createElement('li')
+                li.appendChild(document.createTextNode(item))
+
+
+                const button  = document.createElement('button')
+                button.className = 'remove-item btn-xmark text-red'
+
+                const icon = document.createElement('i')
+                icon.className = 'fa-solid fa-xmark'
+
+                button.appendChild(icon);
+                li.appendChild(button)
+
+                button.querySelector('.items').appendChild(li)
+
+            }
+            createNewItem('cheese')
+             */
+
+            const text1 = document.querySelector('p')
+            const itemList = document.querySelector('.item-list')
+            const items = itemList.querySelector('li');
+
+
+            function run(){
+                console.log(itemList.className)
+                //text1.className = 'card dark';
+                text1.classList.add('dark')
+
+                //text1.classList.toggle('hidden')
+
+                //itemList.style.lineHeight = '4  '
+
+            items.forEach((item, index) => {
+                item.style.color = 'red'
+
+                if(index === 2){
+                    item.style.color= 'blue'
+                }
+            });
+                
+            }
+
+
+            document.querySelector('button').onclick = run;
+</script>
+</body>
+</html>

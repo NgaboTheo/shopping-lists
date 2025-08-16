@@ -1,0 +1,105 @@
+    <!-- ==== STYLES ==== -->
+    <style>
+    .field { display:flex; gap:10px; align-items:center; margin:10px 0; }
+    .select-wrap { position:relative; width:320px; }
+    .select-input {
+        width:100%; padding:10px 12px 10px 36px; border:1px solid #ddd; border-radius:6px;
+    }
+    .select-wrap .icon { position:absolute; left:10px; top:50%; transform:translateY(-50%); }
+    .dropdown {
+        position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid #eee; 
+        max-height:300px; overflow:auto; border-radius:8px; margin-top:6px; display:none; z-index:9999;
+        box-shadow:0 10px 20px rgba(0,0,0,.06);
+    }
+    .dropdown.grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+    .option {
+        padding:10px 12px; cursor:pointer; display:flex; align-items:center; gap:8px; border-bottom:1px solid #f5f5f5;
+    }
+    .option:hover { background:#f7faf9; }
+    .pin { font-size:14px; color:#28a745; }
+    .pill { display:inline-flex; gap:10px; align-items:center; background:#f6f6f6; padding:6px 10px; border-radius:999px; }
+    @media (max-width:560px){ .select-wrap{width:100%} .dropdown.grid{grid-template-columns:1fr} }
+    </style>
+
+    <!-- ==== UI ==== -->
+    <div class="field">
+    <span class="pill">From:</span>
+    <div class="select-wrap">
+        <span class="icon">📍</span>
+        <input id="fromInput" class="select-input" placeholder="Please Select" autocomplete="off">
+        <div id="fromList" class="dropdown grid" role="listbox"></div>
+    </div>
+
+    <span class="pill">To:</span>
+    <div class="select-wrap">
+        <span class="icon">📍</span>
+        <input id="toInput" class="select-input" placeholder="Please Select" autocomplete="off">
+        <div id="toList" class="dropdown grid" role="listbox"></div>
+    </div>
+    </div>
+
+    <script>
+    /* ---------- DATA: starter list (add more anytime) ---------- */
+    const RW_STOPS = [
+    // Kigali – major parks & frequent stops
+    "Nyabugogo Taxi Park","Remera Taxi Park","Kimironko Taxi Park","CBD Bus Park","Kanogo","Kacyiru",
+    "Kimisagara","Gikondo","Nyamirambo (Ryanyuma)","Kibagabaga","Kagugu","ULK","Kimihurura",
+    // Provinces / intercity hubs
+    "Huye","Muhanga (Gitarama)","Musanze (Ruhengeri)","Rubavu (Gisenyi)","Rusizi (Cyangugu)",
+    "Karongi (Kibuye)","Rwamagana","Kayonza","Nyagatare","Gicumbi","Bugesera (Nyamata)","Ngoma (Kibungo)",
+    "Kirehe","Nyanza","Gisagara","Nyamasheke","Rutsiro","Ngororero","Nyabihu","Burera","Gakenke","Rulindo",
+    // Border & corridor stops
+    "Gatuna (Border)","Rusumo (Border)","Bugarama (Border)","Kagitumba (Border)","Cyanika (Border)",
+    // Sample local/route stops seen publicly
+    "Kabuga","Masaka","Kanombe","Kibaya","Rubilizi","Ndera","Musave","Sonatube","Chez Lando","Gitwe",
+    "Batsinda","ULK – Gisozi","Kinyinya","Kicukiro Centre","Gahanga","Gashora","Nyamata – Ntarama",
+    "Kabaya","Karangazi","Gabiro","Kabarondo","Kabarore","Kibeho","Kinazi","Kaduha","Kanyinya","Mageragere",
+    "Gatuna Town","Gatumba","Gashyushya","Kanyinya Terminal","Gihara","Kimironko – Bibare","Kibagabaga Hospital",
+    // Add/extend below…
+    ];
+
+    /* ---------- component ---------- */
+    function makeSearchable(inputEl, listEl, onChange){
+    const open = ()=>{ listEl.style.display='grid'; render(inputEl.value.trim().toLowerCase()); };
+    const close = ()=>{ listEl.style.display='none'; };
+    const render = (q)=>{
+        listEl.innerHTML='';
+        RW_STOPS
+        .filter(n => n.toLowerCase().includes(q))
+        .sort((a,b)=>a.localeCompare(b))
+        .forEach(name=>{
+            const div=document.createElement('div');
+            div.className='option';
+            div.innerHTML=`<span class="pin">📍</span><span>${name}</span>`;
+            div.onclick=()=>{ inputEl.value=name; close(); onChange(name); };
+            listEl.appendChild(div);
+        });
+        if(!listEl.children.length){
+        const empty=document.createElement('div');
+        empty.className='option'; empty.textContent='No results';
+        listEl.appendChild(empty);
+        }
+    };
+    inputEl.addEventListener('focus', open);
+    inputEl.addEventListener('input', ()=>render(inputEl.value.toLowerCase()));
+    document.addEventListener('click', (e)=>{ if(!listEl.contains(e.target) && e.target!==inputEl) close(); });
+    }
+
+    /* ---------- onchange handlers you can integrate with your search ---------- */
+    function onStopChange(which, value){
+    // wire this into your route search:
+    console.log(`${which.toUpperCase()} selected:`, value);
+    // e.g., trigger API call, enable “Search Buses” button, etc.
+    }
+
+    makeSearchable(
+    document.getElementById('fromInput'),
+    document.getElementById('fromList'),
+    v=>onStopChange('from', v)
+    );
+    makeSearchable(
+    document.getElementById('toInput'),
+    document.getElementById('toList'),
+    v=>onStopChange('to', v)
+    );
+    </script>

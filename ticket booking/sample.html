@@ -1,0 +1,237 @@
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Bus Seat Layout</title>
+        <link rel="stylesheet" href="styles.css" />
+
+        <style>
+            body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    }
+
+    .bus {
+    background-color: #fff;
+    padding: 15px;
+    border: 3px solid #ccc;
+    border-radius: 12px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    }
+
+    .driver-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    }
+
+    
+.driver-seat {
+    
+    margin-top: 100px;
+    
+    }
+
+    .seat-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    }
+
+    .seat-group {
+    display: flex;
+    gap: 5px;
+    }
+
+    .seat-button {
+    width: 30px;
+    height: 30px;
+    background-color: #87CEFA;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+
+    .seat-button:hover {
+    background-color: #5db3e7;
+    }
+
+    .back-row {
+    justify-content: center;
+    gap: 5px;
+    }
+
+    img{
+        margin-left: 100px;
+        
+    }
+    .seat-row.back-row{
+        width: 20%;
+    }
+        </style>
+        </head>
+        <body>
+        <div class="bus">
+
+            <!-- Driver Row -->
+            <div class="driver-row">
+            <div class="steering">🛞</div>
+            <img src="download.png" alt="" width="40px" height="40px">
+            <button class="seat-button driver-seat">0</button>
+            </div>
+
+            <!-- Front Row -->
+            <div class="seat-row">
+            <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">1</button>
+                <button class="seat-button"onclick="myFunction(this)">2</button>
+            </div>
+            <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">3</button>
+                <button class="seat-button"onclick="myFunction(this)">4</button>
+            </div>
+            </div>
+
+            <!-- Middle Seat Rows (10 rows of 4 seats) -->
+            <div class="middle-seats">
+            <!-- Repeat 10 times -->
+            <!-- You can generate this dynamically with JS later -->
+            <!-- For now, written manually for clarity -->
+            <!-- Start row 1 -->
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">5</button>
+                <button class="seat-button"onclick="myFunction(this)">6</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">7</button>
+                <button class="seat-button"onclick="myFunction(this)">8</button>
+                </div>
+            </div>
+            <!-- Repeat above div 9 more times -->
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">9</button>
+                <button class="seat-button"onclick="myFunction(this)">10</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">11</button>
+                <button class="seat-button"onclick="myFunction(this)">12</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">13</button>
+                <button class="seat-button"onclick="myFunction(this)">14</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">15</button>
+                <button class="seat-button"onclick="myFunction(this)">16</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">17</button>
+                <button class="seat-button"onclick="myFunction(this)">18</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">19</button>
+                <button class="seat-button"onclick="myFunction(this)">20</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">21</button>
+                <button class="seat-button"onclick="myFunction(this)">22</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">23</button>
+                <button class="seat-button"onclick="myFunction(this)">24</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">25</button>
+                <button class="seat-button"onclick="myFunction(this)">26</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">27</button>
+                <button class="seat-button"onclick="myFunction(this)">28</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">29</button>
+                <button class="seat-button"onclick="myFunction(this)">30</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">31</button>
+                <button class="seat-button"onclick="myFunction(this)">32</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">33</button>
+                <button class="seat-button"onclick="myFunction(this)">34</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">35</button>
+                <button class="seat-button"onclick="myFunction(this)">36</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">37</button>
+                <button class="seat-button"onclick="myFunction(this)">38</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">39</button>
+                <button class="seat-button"onclick="myFunction(this)">40</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">41</button>
+                <button class="seat-button"onclick="myFunction(this)">42</button>
+                </div>
+                <div class="seat-group">
+                <button class="seat-button"onclick="myFunction(this)">43</button>
+                <button class="seat-button"onclick="myFunction(this)">44</button>
+                </div>
+            </div>
+            <!-- End middle rows -->
+            </div>
+
+            <!-- Back Row (5 seats) -->
+            <div class="seat-row back-row">
+            <button class="seat-button"onclick="myFunction(this)">45</button>
+            <button class="seat-button"onclick="myFunction(this)">46</button>
+            <button class="seat-button"onclick="myFunction(this)">47</button>
+            <button class="seat-button"onclick="myFunction(this)">48</button>
+            <button class="seat-button"onclick="myFunction(this)">49</button>
+            </div><button>PAYMENT</button>
+
+
+
+
+            
+        </div>
+        
+        <script>
+            function myFunction(e) {
+                e.disabled = true;
+            }
+        </script>
+        </body>
+        </html>
